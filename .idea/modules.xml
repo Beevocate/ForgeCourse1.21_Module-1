@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ForgeCourse1.21 Module 1.iml" filepath="$PROJECT_DIR$/.idea/ForgeCourse1.21 Module 1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge-1.21-51.0.30-mdk.main.iml" filepath="$PROJECT_DIR$/.idea/modules/forge-1.21-51.0.30-mdk.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge-1.21-51.0.30-mdk.test.iml" filepath="$PROJECT_DIR$/.idea/modules/forge-1.21-51.0.30-mdk.test.iml" />
     </modules>
