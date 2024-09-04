@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "azurite",
+  "key": {
+    "#": {
+      "item": "mccourse:azurite"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "mccourse:azurite_wall"
+  }
+}

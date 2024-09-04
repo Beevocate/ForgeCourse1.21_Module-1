@@ -1,0 +1,70 @@
+{
+  "item.mccourse.raw_azurite": "Raw Azurite",
+  "item.mccourse.azurite": "Azurite",
+  "item.mccourse.chainsaw": "Chainsaw",
+  "item.mccourse.onion": "Onion",
+  "item.mccourse.aurora_ashes": "Aurora Ashes",
+
+  "item.mccourse.azurite_sword": "Azurite Sword",
+  "item.mccourse.azurite_pickaxe": "Azurite Pickaxe",
+  "item.mccourse.azurite_shovel": "Azurite Shovel",
+  "item.mccourse.azurite_axe": "Azurite Axe",
+  "item.mccourse.azurite_hoe": "Azurite Hoe",
+  "item.mccourse.azurite_paxel": "Azurite Paxel",
+  "item.mccourse.azurite_hammer": "Azurite Hammer",
+
+  "item.mccourse.azurite_helmet": "Azurite Helmet",
+  "item.mccourse.azurite_chestplate": "Azurite Chestplate",
+  "item.mccourse.azurite_leggings": "Azurite Leggings",
+  "item.mccourse.azurite_boots": "Azurite Boots",
+
+  "item.mccourse.capybara_spawn_egg": "Capybara Spawn Egg",
+
+  "item.mccourse.raw_meme_obamium": "Raw Obamium",
+
+
+  "block.mccourse.azurite_block": "Block of Azurite",
+  "block.mccourse.azurite_ore": "Azurite Ore",
+  "block.mccourse.azurite_nether_ore": "Azurite Ore",
+  "block.mccourse.azurite_end_ore": "Azurite Ore",
+
+
+  "block.mccourse.azurite_stairs": "Azurite Stairs",
+  "block.mccourse.azurite_slab": "Azurite Slab",
+
+  "block.mccourse.azurite_button": "Azurite Button",
+  "block.mccourse.azurite_pressure_plate": "Azurite Pressure Plate",
+
+  "block.mccourse.azurite_fence": "Azurite Fence",
+  "block.mccourse.azurite_fence_gate": "Azurite Fence Gate",
+  "block.mccourse.azurite_wall": "Azurite Wall",
+
+  "block.mccourse.azurite_door": "Azurite Door",
+  "block.mccourse.azurite_trapdoor": "Azurite Trapdoor",
+
+
+  "block.mccourse.azurite_lamp": "Azurite Lamp",
+
+
+  "block.mccourse.azurite_deepslate_ore": "Azurite Deepslate Ore",
+  "block.mccourse.magic_block": "Magic Block",
+  "block.mccourse.obamium_meme_ore": "Obamium Ore",
+
+
+
+
+  "tooltip.mccourse.chainsaw.tooltip.shift": "Press §eShift§r: Tissemand",
+  "tooltip.mccourse.chainsaw.tooltop.1": "This Chainsaw will cut down trees",
+  "tooltip.mccourse.chainsaw.tooltip.2": "§oChainsaw go br br OBAMA!§r",
+
+
+  "tooltip.mccourse.magic_block.tooltip.1": "§oInside of this there lies magic§r",
+
+  "tooltip.mccourse.onion.tooltip.1": "WARNING: When raw this is quite unpleasent",
+
+
+  "creativetab.azurite_blocks": "God Blocks",
+  "creativetab.azurite_items": "God Items",
+  "creativetab.modded": "All Items"
+
+}

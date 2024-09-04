@@ -1,6 +1,13 @@
 package com.beevocate.mccourse;
 
+import com.beevocate.mccourse.block.ModBlocks;
+import com.beevocate.mccourse.entity.ModEntities;
+import com.beevocate.mccourse.entity.client.CapybaraRenderer;
+import com.beevocate.mccourse.item.ModCreativeModeTabs;
+import com.beevocate.mccourse.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -14,6 +21,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import static com.beevocate.mccourse.entity.ModEntities.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MCCourseMod.MOD_ID)
@@ -29,7 +38,11 @@ public class MCCourseMod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModCreativeModeTabs.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
+        register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -45,7 +58,8 @@ public class MCCourseMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -60,6 +74,7 @@ public class MCCourseMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+            EntityRenderers.register(ModEntities.CAPYBARA.get(), CapybaraRenderer::new);
         }
     }
 }
