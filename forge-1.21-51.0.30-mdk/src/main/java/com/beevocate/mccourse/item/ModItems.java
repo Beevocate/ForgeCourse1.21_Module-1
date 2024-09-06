@@ -44,6 +44,12 @@ public class ModItems {
     public static final RegistryObject<Item> AURORA_ASHES = ITEMS.register("aurora_ashes",
             () -> new FuelItem(new Item.Properties(),800));
 
+    public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
+            () -> new MetalDetectorItem(new Item.Properties().durability(100)));
+
+    public static final RegistryObject<Item> DATA_TABLET = ITEMS.register("data_tablet",
+            () -> new DataTabletItem(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> AZURITE_SWORD = ITEMS.register("azurite_sword",
             () -> new ModEffectSwordItem(ModToolTiers.AZURITE, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.AZURITE,5,3f)), MobEffects.JUMP));
@@ -72,7 +78,6 @@ public class ModItems {
             () -> new HammerItem(ModToolTiers.AZURITE, new Item.Properties()
                     .attributes(PickaxeItem.createAttributes(ModToolTiers.AZURITE, 7.0F, -3.5F))));
 
-
     public static final RegistryObject<Item> AZURITE_HELMET = ITEMS.register("azurite_helmet",
             () -> new ModArmorItem(ModArmorMaterials.AZURITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(11))));
@@ -93,6 +98,9 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.CAPYBARA,0x664216, 0xdeab1f,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> BLOOD_DEMON_SPAWN_EGG = ITEMS.register("blood_demon_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.BLOOD_DEMON,0x664216, 0xdeab1f,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
