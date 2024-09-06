@@ -1,6 +1,7 @@
 package com.beevocate.mccourse;
 
 import com.beevocate.mccourse.block.ModBlocks;
+import com.beevocate.mccourse.component.ModDataComponentTypes;
 import com.beevocate.mccourse.entity.ModEntities;
 import com.beevocate.mccourse.entity.client.CapybaraRenderer;
 import com.beevocate.mccourse.item.ModCreativeModeTabs;
@@ -41,8 +42,13 @@ public class MCCourseMod {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModEntities.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
         register(modEventBus);
+
+
+
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

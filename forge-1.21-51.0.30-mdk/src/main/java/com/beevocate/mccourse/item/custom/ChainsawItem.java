@@ -1,5 +1,6 @@
 package com.beevocate.mccourse.item.custom;
 
+import com.beevocate.mccourse.component.ModDataComponentTypes;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
@@ -32,7 +33,14 @@ public class ChainsawItem extends Item {
                 context.getItemInHand().hurtAndBreak(1, ((ServerLevel) level),
                         ((ServerPlayer) context.getPlayer()), item ->
                         Objects.requireNonNull(context.getPlayer()).onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
+
+
+                context.getItemInHand().set(ModDataComponentTypes.COORDINATES.get(), context.getClickedPos());
             }
+        }
+
+        if(level.getBlockState(context.getClickedPos()).is(BlockTags.LOGS)) {
+            context.getItemInHand().set(ModDataComponentTypes.COORDINATES.get(), context.getClickedPos());
         }
 
         return InteractionResult.CONSUME;
@@ -47,6 +55,11 @@ public class ChainsawItem extends Item {
             pTooltipComponents.add(Component.translatable("tooltip.mccourse.chainsaw.tooltip.1"));
             pTooltipComponents.add(Component.translatable("tooltip.mccourse.chainsaw.tooltip.2"));
         }
+        if(pStack.get(ModDataComponentTypes.COORDINATES.get()) != null) {
+            pTooltipComponents.add(Component.literal("Last Tree was chopped at " + pStack.get(ModDataComponentTypes.COORDINATES.get())));
+        }
+
+
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }

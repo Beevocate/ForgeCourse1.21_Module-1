@@ -1,9 +1,10 @@
 package com.beevocate.mccourse.entity.client;
 
-import com.beevocate.mccourse.entity.client.animation.CapybaraAnimations;
-import com.beevocate.mccourse.entity.custom.CapybaraEntity;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.beevocate.mccourse.entity.client.animation.CapybaraAnimations;
+import com.beevocate.mccourse.entity.custom.CapybaraEntity;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -104,6 +105,5 @@ public class CapybaraModel extends HierarchicalModel<CapybaraEntity> {
     public ModelPart root() {
         return body;
     }
-
 }
 

@@ -5,6 +5,9 @@
   "item.mccourse.onion": "Onion",
   "item.mccourse.aurora_ashes": "Aurora Ashes",
 
+  "item.mccourse.metal_detector": "Metal Detector",
+  "item.mccourse.data_tablet": "Data Tablet",
+
   "item.mccourse.azurite_sword": "Azurite Sword",
   "item.mccourse.azurite_pickaxe": "Azurite Pickaxe",
   "item.mccourse.azurite_shovel": "Azurite Shovel",
@@ -19,6 +22,7 @@
   "item.mccourse.azurite_boots": "Azurite Boots",
 
   "item.mccourse.capybara_spawn_egg": "Capybara Spawn Egg",
+  "item.mccourse.blood_demon_spawn_egg": "Blood Demon Spawn Egg",
 
   "item.mccourse.raw_meme_obamium": "Raw Obamium",
 
@@ -62,6 +66,8 @@
 
   "tooltip.mccourse.onion.tooltip.1": "WARNING: When raw this is quite unpleasent",
 
+
+  "item.mccourse.metal_detector.no_valuables": "No Valuables Found!",
 
   "creativetab.azurite_blocks": "God Blocks",
   "creativetab.azurite_items": "God Items",
