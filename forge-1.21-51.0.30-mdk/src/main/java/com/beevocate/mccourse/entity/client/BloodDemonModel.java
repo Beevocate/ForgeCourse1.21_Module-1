@@ -29,7 +29,7 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
 
         PartDefinition leftarm = arms.addOrReplaceChild("leftarm", CubeListBuilder.create().texOffs(24, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-6.0F, -6.0F, 0.0F));
 
-        PartDefinition rightarm = arms.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(0, 32).addBox(-2.0F, 0.3192F, -1.7761F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(6.0F, -7.0F, 0.0F));
+        PartDefinition rightarm = arms.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(0, 32).addBox(-2.0F, 1.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(6.0F, -7.0F, 0.0F));
 
         PartDefinition torso = body.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -24.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
@@ -44,6 +44,8 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
         return LayerDefinition.create(meshdefinition, 48, 48);
 
 
+
+
     }
 
     @Override
@@ -52,8 +54,8 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
 
-        this.animateWalk(BloodDemonAnimations.ANIMATION_BLOOD_DEMON_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, BloodDemonAnimations.ANIMATION_BLOOD_DEMON_IDLE, ageInTicks, 1f);
+        this.animate(entity.idleAnimationState, BloodDemonAnimations.idle, ageInTicks, 1f);
+        this.animateWalk(BloodDemonAnimations.walk, limbSwing, limbSwingAmount, 2f, 2.5f);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {

@@ -3,6 +3,7 @@ package com.beevocate.mccourse;
 import com.beevocate.mccourse.block.ModBlocks;
 import com.beevocate.mccourse.component.ModDataComponentTypes;
 import com.beevocate.mccourse.entity.ModEntities;
+import com.beevocate.mccourse.entity.client.BloodDemonRenderer;
 import com.beevocate.mccourse.entity.client.CapybaraRenderer;
 import com.beevocate.mccourse.item.ModCreativeModeTabs;
 import com.beevocate.mccourse.item.ModItems;
@@ -78,8 +79,8 @@ public class MCCourseMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
             EntityRenderers.register(ModEntities.CAPYBARA.get(), CapybaraRenderer::new);
+            EntityRenderers.register(ModEntities.BLOOD_DEMON.get(), BloodDemonRenderer::new);
         }
     }
 }

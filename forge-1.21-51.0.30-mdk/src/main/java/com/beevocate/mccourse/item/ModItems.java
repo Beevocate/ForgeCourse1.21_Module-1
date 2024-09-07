@@ -99,7 +99,7 @@ public class ModItems {
                     new Item.Properties()));
 
     public static final RegistryObject<Item> BLOOD_DEMON_SPAWN_EGG = ITEMS.register("blood_demon_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.BLOOD_DEMON,0x664216, 0xdeab1f,
+            () -> new ForgeSpawnEggItem(ModEntities.BLOOD_DEMON,0xe14f4f, 0x8a2700,
                     new Item.Properties()));
 
     public static void register(IEventBus eventBus){

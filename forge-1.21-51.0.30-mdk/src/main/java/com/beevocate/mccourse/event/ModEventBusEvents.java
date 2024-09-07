@@ -2,8 +2,10 @@ package com.beevocate.mccourse.event;
 
 import com.beevocate.mccourse.MCCourseMod;
 import com.beevocate.mccourse.entity.ModEntities;
+import com.beevocate.mccourse.entity.client.BloodDemonModel;
 import com.beevocate.mccourse.entity.client.CapybaraModel;
 import com.beevocate.mccourse.entity.client.ModModelLayers;
+import com.beevocate.mccourse.entity.custom.BloodDemonEntity;
 import com.beevocate.mccourse.entity.custom.CapybaraEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
@@ -19,13 +21,13 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.CAPYBARA, CapybaraModel::createBodyLayer);
-        event.registerLayerDefinition(ModModelLayers.BLOOD_DEMON, CapybaraModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.BLOOD_DEMON, BloodDemonModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.CAPYBARA.get(), CapybaraEntity.createAttributes().build());
-        event.put(ModEntities.BLOOD_DEMON.get(), CapybaraEntity.createAttributes().build());
+        event.put(ModEntities.BLOOD_DEMON.get(), BloodDemonEntity.createAttributes().build());
     }
 
     @SubscribeEvent

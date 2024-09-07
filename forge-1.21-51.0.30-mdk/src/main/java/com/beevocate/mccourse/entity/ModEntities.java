@@ -20,7 +20,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<BloodDemonEntity>> BLOOD_DEMON =
             ENTITY_TYPES.register("blood_demon",() -> EntityType.Builder.of(BloodDemonEntity::new, MobCategory.MONSTER)
-                    .sized(1f,1f).build("blood_demon"));
+                    .sized(0.9f,2.1f).build("blood_demon"));
 
 
     public static void register(IEventBus eventBus) {
