@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="jar1">
+    <output-path>$PROJECT_DIR$/out/artifacts/jar1</output-path>
+    <root id="archive" name="jar1.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/forge-1.21-51.0.30-mdk/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
