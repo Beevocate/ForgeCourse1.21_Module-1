@@ -42,7 +42,6 @@ public class MCCourseMod {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        ModEntities.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
         register(modEventBus);
 

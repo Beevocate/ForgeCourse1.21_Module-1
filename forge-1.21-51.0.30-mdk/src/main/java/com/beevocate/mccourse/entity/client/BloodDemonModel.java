@@ -16,12 +16,7 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
 
     public BloodDemonModel(ModelPart root) {
         this.body = root.getChild("body");
-        this.head = body.getChild("body").getChild("head");
-    }
-
-    public BloodDemonModel(ModelPart body, ModelPart head) {
-        this.body = body;
-        this.head = head;
+        this.head = body.getChild("head");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -40,40 +35,44 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
 
         PartDefinition legs = body.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition left_leg = legs.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(16, 32).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-2.0F, -12.0F, 0.0F));
+        PartDefinition leftleg = legs.addOrReplaceChild("leftleg", CubeListBuilder.create().texOffs(16, 32).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-2.0F, -12.0F, 0.0F));
 
-        PartDefinition right_leg = legs.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, -12.0F, 0.0F));
+        PartDefinition rightleg = legs.addOrReplaceChild("rightleg", CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, -12.0F, 0.0F));
 
         PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -28.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 48, 48);
+
+
     }
 
     @Override
-    public ModelPart root() {
-        return body;
-    }
-
-    @Override
-    public void setupAnim(BloodDemonEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(BloodDemonEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,
+                          float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
-        this.applyHeadRotation(netHeadYaw,headPitch);
+        this.applyHeadRotation(netHeadYaw, headPitch);
 
-        this.animateWalk(BloodDemonAnimations.walk,limbSwing,limbSwingAmount,2f,2.5f);
-        this.animate(entity.idleAnimationState,BloodDemonAnimations.idle, ageInTicks,1f);
+        this.animateWalk(BloodDemonAnimations.ANIMATION_BLOOD_DEMON_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+        this.animate(entity.idleAnimationState, BloodDemonAnimations.ANIMATION_BLOOD_DEMON_IDLE, ageInTicks, 1f);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {
         headYaw = Mth.clamp(headYaw, -30f, 30f);
         headPitch = Mth.clamp(headPitch, -25f, 45f);
 
-        this.head.xRot = headYaw * ((float)Math.PI / 180F);
-        this.head.yRot = headPitch * ((float)Math.PI / 180F);
+        this.head.xRot = headYaw * ((float) Math.PI / 180F);
+        this.head.yRot = headPitch * ((float) Math.PI / 180F);
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight,
+                               int packedOverlay, int color) {
         body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 
+    @Override
+    public ModelPart root() {
+        return body;
+    }
 }
+

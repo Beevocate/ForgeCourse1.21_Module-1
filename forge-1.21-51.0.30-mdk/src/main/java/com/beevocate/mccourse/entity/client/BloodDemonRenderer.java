@@ -13,6 +13,6 @@ public class BloodDemonRenderer extends MobRenderer<BloodDemonEntity, BloodDemon
 
     @Override
     public ResourceLocation getTextureLocation(BloodDemonEntity pEntity) {
-        return ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID,"textures/entity/blooddemon/blood_demon.png");
+        return ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID,"textures/entity/blood_demon/blood_demon.png");
     }
 }

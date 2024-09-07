@@ -36,8 +36,9 @@ public class BloodDemonEntity extends Monster implements Enemy {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH,20D)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.23F)
+                .add(Attributes.MOVEMENT_SPEED, 0.23)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
                 .add(Attributes.ARMOR, 2.0);
     }
