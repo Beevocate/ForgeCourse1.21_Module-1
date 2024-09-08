@@ -69,7 +69,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
 
     }
 
-    /* This shit does not work "this.entityData." doesn't have define
+    /* This does not work "this.entityData." doesn't have define
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
