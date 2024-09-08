@@ -10,6 +10,8 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
+import static com.beevocate.mccourse.entity.client.animation.BloodDemonAnimations.attack;
+
 public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
     private final ModelPart body;
     private final ModelPart head;
@@ -42,10 +44,6 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
         PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -28.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 48, 48);
-
-
-
-
     }
 
     @Override
@@ -54,8 +52,9 @@ public class BloodDemonModel extends HierarchicalModel<BloodDemonEntity> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
 
-        this.animate(entity.idleAnimationState, BloodDemonAnimations.idle, ageInTicks, 1f);
         this.animateWalk(BloodDemonAnimations.walk, limbSwing, limbSwingAmount, 2f, 2.5f);
+        this.animate(entity.idleAnimationState, BloodDemonAnimations.idle, ageInTicks, 1f);
+        this.animate(entity.attackAnimationState, BloodDemonAnimations.attack, ageInTicks, 1f);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {

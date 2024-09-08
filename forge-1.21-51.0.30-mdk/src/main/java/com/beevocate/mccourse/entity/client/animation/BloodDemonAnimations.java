@@ -29,7 +29,7 @@ public class BloodDemonAnimations {
             ))
             .build();
 
-    public static final AnimationDefinition attack = AnimationDefinition.Builder.withLength(0.3333F)
+    public static final AnimationDefinition attack = AnimationDefinition.Builder.withLength(0.5f).looping()
             .addAnimation("leftarm", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0.0F, KeyframeAnimations.degreeVec(-120.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.0417F, KeyframeAnimations.degreeVec(-115.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
