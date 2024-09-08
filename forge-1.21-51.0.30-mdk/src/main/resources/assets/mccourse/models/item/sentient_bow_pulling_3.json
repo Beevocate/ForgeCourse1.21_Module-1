@@ -1,0 +1,6 @@
+{
+    "parent": "mccourse:item/sentient_bow",
+    "textures": {
+        "layer0": "mccourse:item/sentient_bow_pulling_3"
+    }
+}

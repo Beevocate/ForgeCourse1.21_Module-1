@@ -94,6 +94,12 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.AZURITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(11))));
 
+    public static final RegistryObject<Item> KAUPEN_BOW = ITEMS.register("kaupen_bow",
+            () -> new BowItem(new Item.Properties().durability(250)));
+
+    public static final RegistryObject<Item> SENTIENT_BOW = ITEMS.register("sentient_bow",
+            () -> new BowItem(new Item.Properties().durability(250)));
+
     public static final RegistryObject<Item> CAPYBARA_SPAWN_EGG = ITEMS.register("capybara_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.CAPYBARA,0x664216, 0xdeab1f,
                     new Item.Properties()));

@@ -73,10 +73,9 @@ public class BloodDemonEntity extends Monster implements Enemy {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(ATTACKING, false);
+        this.entityData.defineId();
     }
-
-     */
+    */
 
     // BOSS HEALTH BAR
     @Override

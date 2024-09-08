@@ -60,7 +60,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.AZURITE_DOOR);
 
         basicItem(ModItems.METAL_DETECTOR.get());
-        basicItem(ModItems.DATA_TABLET.get());
+        // basicItem(ModItems.DATA_TABLET.get());
     }
 
     public void buttonItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {

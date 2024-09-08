@@ -7,6 +7,7 @@ import com.beevocate.mccourse.entity.client.BloodDemonRenderer;
 import com.beevocate.mccourse.entity.client.CapybaraRenderer;
 import com.beevocate.mccourse.item.ModCreativeModeTabs;
 import com.beevocate.mccourse.item.ModItems;
+import com.beevocate.mccourse.util.ModItemProperties;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -79,6 +80,8 @@ public class MCCourseMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ModItemProperties.addCustomItemProperties();
+
             EntityRenderers.register(ModEntities.CAPYBARA.get(), CapybaraRenderer::new);
             EntityRenderers.register(ModEntities.BLOOD_DEMON.get(), BloodDemonRenderer::new);
         }
