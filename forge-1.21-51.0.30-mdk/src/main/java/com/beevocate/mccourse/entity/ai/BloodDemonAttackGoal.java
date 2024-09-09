@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class BloodDemonAttackGoal extends MeleeAttackGoal {
     private final BloodDemonEntity entity;
-    private int attackDelay = 10;
+    private int attackDelay = 0;
     private int ticksUntilNextAttack = 10;
     private boolean shouldCountTillNextAttack = false;
 
@@ -21,13 +21,14 @@ public class BloodDemonAttackGoal extends MeleeAttackGoal {
     @Override
     public void start() {
         super.start();
-        attackDelay = 10;
-        ticksUntilNextAttack = 10;
+        mob.setAggressive(true);
+        attackDelay = 0;
+        ticksUntilNextAttack = 0;
     }
 
     @Override
     protected void checkAndPerformAttack(LivingEntity pEnemy) {
-        if (isEnemyWithinAttackDistance(pEnemy,10)) {
+        if (isEnemyWithinAttackDistance(pEnemy,1)) {
             shouldCountTillNextAttack = true;
 
             if(isTimeToStartAttackAnimation()) {
@@ -46,18 +47,10 @@ public class BloodDemonAttackGoal extends MeleeAttackGoal {
         }
     }
 
-    private boolean isEnemyWithinAttackDistance(LivingEntity pEnemy, double pDistToEnemySqr) {
-        return pDistToEnemySqr <= this.mob.distanceToSqr(pEnemy);
+    private boolean isEnemyWithinAttackDistance(LivingEntity Monster, double pDistToEnemySqr) {
+        return pDistToEnemySqr <= this.mob.distanceToSqr(Monster);
     }
 
-    @Override
-    public boolean canUse() {
-        if (super.canUse() && this.mob.distanceToSqr(this.mob.getTarget()) <= 3 * 3) {
-            return true;
-        }
-
-        return false;
-    }
 
     @Override
     protected boolean canPerformAttack(LivingEntity pEntity) {

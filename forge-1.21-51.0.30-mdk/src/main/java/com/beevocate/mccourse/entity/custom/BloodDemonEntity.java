@@ -50,7 +50,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
                 .add(Attributes.MAX_HEALTH, 100D)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.36)
-                .add(Attributes.ATTACK_DAMAGE, 3.0)
+                .add(Attributes.ATTACK_DAMAGE, 14.0)
                 .add(Attributes.ARMOR, 10.0);
     }
 
@@ -84,10 +84,12 @@ public class BloodDemonEntity extends Monster implements Enemy {
         super.setCustomName(pName);
         this.bossEvent.setName(this.getDisplayName());
     }
+
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
     }
+
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
@@ -95,11 +97,13 @@ public class BloodDemonEntity extends Monster implements Enemy {
             this.bossEvent.setName(this.getDisplayName());
         }
     }
+
     @Override
     public void startSeenByPlayer(ServerPlayer pPlayer) {
         super.startSeenByPlayer(pPlayer);
         this.bossEvent.addPlayer(pPlayer);
     }
+
     @Override
     public void stopSeenByPlayer(ServerPlayer pPlayer) {
         super.stopSeenByPlayer(pPlayer);
