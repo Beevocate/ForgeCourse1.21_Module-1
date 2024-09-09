@@ -1,46 +1,102 @@
 package com.beevocate.mccourse.entity.ai;
 
-
 import com.beevocate.mccourse.entity.custom.BloodDemonEntity;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.monster.Zombie;
 
 
 public class BloodDemonAttackGoal extends MeleeAttackGoal {
-    private final BloodDemonEntity bloodDemon;
-    private int raiseArmTicks;
+    private final BloodDemonEntity entity;
+    private int attackDelay = 10;
+    private int ticksUntilNextAttack = 10;
+    private boolean shouldCountTillNextAttack = false;
 
-    public BloodDemonAttackGoal(BloodDemonEntity bloodDemon, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
-        super(bloodDemon, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        this.bloodDemon = bloodDemon;
-    }
-
-    public BloodDemonAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen, BloodDemonEntity bloodDemon) {
+    public BloodDemonAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        this.bloodDemon = bloodDemon;
+        entity = ((BloodDemonEntity) pMob);
     }
 
     @Override
     public void start() {
         super.start();
-        this.raiseArmTicks = 0;
+        attackDelay = 10;
+        ticksUntilNextAttack = 10;
     }
 
     @Override
-    public void stop() {
-        super.stop();
-        this.bloodDemon.setAggressive(false);
+    protected void checkAndPerformAttack(LivingEntity pEnemy) {
+        if (isEnemyWithinAttackDistance(pEnemy,10)) {
+            shouldCountTillNextAttack = true;
+
+            if(isTimeToStartAttackAnimation()) {
+                entity.setAttacking(true);
+            }
+
+            if(isTimeToAttack()) {
+                this.mob.getLookControl().setLookAt(pEnemy.getX(), pEnemy.getEyeY(), pEnemy.getZ());
+                performAttack(pEnemy);
+            }
+        } else {
+            resetAttackCooldown();
+            shouldCountTillNextAttack = false;
+            entity.setAttacking(false);
+            entity.attackAnimationTimeout = 0;
+        }
+    }
+
+    private boolean isEnemyWithinAttackDistance(LivingEntity pEnemy, double pDistToEnemySqr) {
+        return pDistToEnemySqr <= this.mob.distanceToSqr(pEnemy);
+    }
+
+    @Override
+    public boolean canUse() {
+        if (super.canUse() && this.mob.distanceToSqr(this.mob.getTarget()) <= 3 * 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    protected boolean canPerformAttack(LivingEntity pEntity) {
+        return super.canPerformAttack(pEntity);
+    }
+
+    protected void resetAttackCooldown() {
+        this.ticksUntilNextAttack = this.adjustedTickDelay(attackDelay * 2);
+    }
+
+    protected boolean isTimeToAttack() {
+        return this.ticksUntilNextAttack <= 0;
+    }
+
+    protected boolean isTimeToStartAttackAnimation() {
+        return this.ticksUntilNextAttack <= attackDelay;
+    }
+
+    protected int getTicksUntilNextAttack() {
+        return this.ticksUntilNextAttack;
+    }
+
+    protected void performAttack(LivingEntity pEnemy) {
+        this.resetAttackCooldown();
+        this.mob.swing(InteractionHand.MAIN_HAND);
+        this.mob.doHurtTarget(pEnemy);
     }
 
     @Override
     public void tick() {
         super.tick();
-        this.raiseArmTicks++;
-        if (this.raiseArmTicks >= 5 && this.getTicksUntilNextAttack() < this.getAttackInterval() / 2) {
-            this.bloodDemon.setAggressive(true);
-        } else {
-            this.bloodDemon.setAggressive(false);
+        if(shouldCountTillNextAttack) {
+            this.ticksUntilNextAttack = Math.max(this.ticksUntilNextAttack - 1, 0);
         }
+    }
+
+    @Override
+    public void stop() {
+        entity.setAttacking(false);
+        super.stop();
     }
 }

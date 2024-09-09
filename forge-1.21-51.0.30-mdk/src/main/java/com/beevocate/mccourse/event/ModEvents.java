@@ -26,6 +26,7 @@ public class ModEvents {
 
     // Done with the help of https://github.com/CoFH/CoFHCore/blob/1.19.x/src/main/java/cofh/core/event/AreaEffectEvents.java
     // Don't be a jerk License
+
     @SubscribeEvent
     public static void onHammerUsage(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
@@ -49,6 +50,7 @@ public class ModEvents {
         }
     }
 
+    @SubscribeEvent
     public static void livingDamage(LivingDamageEvent event) {
         if(event.getEntity() instanceof Sheep sheep) {
             if(event.getSource().getDirectEntity() instanceof Player player) {

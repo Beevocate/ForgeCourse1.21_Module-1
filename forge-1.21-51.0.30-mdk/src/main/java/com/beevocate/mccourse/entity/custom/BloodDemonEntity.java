@@ -1,5 +1,6 @@
 package com.beevocate.mccourse.entity.custom;
 
+import com.beevocate.mccourse.entity.ModEntities;
 import com.beevocate.mccourse.entity.ai.BloodDemonAttackGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -56,7 +57,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new BloodDemonAttackGoal(this, 1, false));
+        this.goalSelector.addGoal(2, new BloodDemonAttackGoal(this, 1, true));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.addBehaviourGoals();
@@ -69,13 +70,13 @@ public class BloodDemonEntity extends Monster implements Enemy {
 
     }
 
-    /* This does not work "this.entityData." doesn't have define
+
+
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.defineId();
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(ATTACKING,false);
     }
-    */
 
     // BOSS HEALTH BAR
     @Override
@@ -105,12 +106,10 @@ public class BloodDemonEntity extends Monster implements Enemy {
         this.bossEvent.removePlayer(pPlayer);
     }
 
-
     @Override
     protected void customServerAiStep() {
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
-
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
@@ -123,7 +122,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
         }
 
         if (this.attackAnimationTimeout <= 0) {
-            this.attackAnimationTimeout = 40;
+            this.attackAnimationTimeout = 10;
             this.attackAnimationState.start(this.tickCount);
         } else {
             --this.attackAnimationTimeout;
