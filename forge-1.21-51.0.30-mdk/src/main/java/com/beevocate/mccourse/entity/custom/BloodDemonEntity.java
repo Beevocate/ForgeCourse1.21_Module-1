@@ -1,6 +1,5 @@
 package com.beevocate.mccourse.entity.custom;
 
-import com.beevocate.mccourse.entity.ModEntities;
 import com.beevocate.mccourse.entity.ai.BloodDemonAttackGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -28,6 +27,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(BloodDemonEntity.class, EntityDataSerializers.BOOLEAN);
 
+    // Display Boss Health Bar
     private final ServerBossEvent bossEvent = (ServerBossEvent)
             new ServerBossEvent(
                     this.getDisplayName(),
@@ -52,6 +52,7 @@ public class BloodDemonEntity extends Monster implements Enemy {
                 .add(Attributes.MOVEMENT_SPEED, 0.36)
                 .add(Attributes.ATTACK_DAMAGE, 14.0)
                 .add(Attributes.ARMOR, 10.0);
+
     }
 
     @Override
@@ -65,12 +66,9 @@ public class BloodDemonEntity extends Monster implements Enemy {
 
     protected void addBehaviourGoals() {
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Monster.class, true));
 
     }
-
-
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
@@ -116,6 +114,8 @@ public class BloodDemonEntity extends Monster implements Enemy {
     }
 
     private void setupAnimationStates() {
+
+        // IDLE ANIMATION
         if (this.idleAnimationTimeout <= 0) {
             // THIS IS THE LENGTH OF THE ACTUAL ANIMATION,
             // CHECK THAT IT IS THE SAME LENGTH AS THE ANIMATION IN BLOCKBENCH
@@ -125,20 +125,22 @@ public class BloodDemonEntity extends Monster implements Enemy {
             --this.idleAnimationTimeout;
         }
 
-        if (this.attackAnimationTimeout <= 0) {
-            this.attackAnimationTimeout = 10;
-            this.attackAnimationState.start(this.tickCount);
+        // ATTACK ANIMATION
+
+        if (this.isAttacking() && attackAnimationTimeout <= 0) {
+            attackAnimationTimeout = 10; // Length in ticks of your animation
+            attackAnimationState.start(this.tickCount);
         } else {
             --this.attackAnimationTimeout;
         }
 
-        if (!this.isAttacking()) {
+        if(!this.isAttacking()) {
             attackAnimationState.stop();
         }
+
     }
 
-
-        public void setAttacking (boolean attacking) {
+    public void setAttacking (boolean attacking) {
             this.entityData.set(ATTACKING, attacking);
         }
 
