@@ -23,12 +23,13 @@ public class BloodDemonAttackGoal extends MeleeAttackGoal {
         super.start();
         mob.setAggressive(true);
         attackDelay = 0;
-        ticksUntilNextAttack = 0;
+        ticksUntilNextAttack = 10;
     }
+
 
     @Override
     protected void checkAndPerformAttack(LivingEntity pEnemy) {
-        if (isEnemyWithinAttackDistance(pEnemy,1)) {
+        if (isEnemyWithinAttackDistance(pEnemy,2)) {
             shouldCountTillNextAttack = true;
 
             if(isTimeToStartAttackAnimation()) {
@@ -48,7 +49,7 @@ public class BloodDemonAttackGoal extends MeleeAttackGoal {
     }
 
     private boolean isEnemyWithinAttackDistance(LivingEntity Monster, double pDistToEnemySqr) {
-        return pDistToEnemySqr <= this.mob.distanceToSqr(Monster);
+        return pDistToEnemySqr >= this.mob.distanceTo(Monster);
     }
 
 
