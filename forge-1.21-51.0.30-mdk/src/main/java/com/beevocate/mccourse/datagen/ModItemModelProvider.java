@@ -60,6 +60,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.AZURITE_DOOR);
 
         basicItem(ModItems.METAL_DETECTOR.get());
+        basicItem(ModItems.ONION_SEEDS.get());
         // basicItem(ModItems.DATA_TABLET.get());
     }
 

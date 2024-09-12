@@ -44,6 +44,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DATA_TABLET.get());
                         output.accept(ModItems.KAUPEN_BOW.get());
                         output.accept(ModItems.SENTIENT_BOW.get());
+                        output.accept(ModItems.ONION_SEEDS.get());
 
 
                     }).build());

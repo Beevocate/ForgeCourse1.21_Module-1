@@ -58,7 +58,8 @@
   "block.mccourse.obamium_meme_ore": "Obamium Ore",
 
 
-
+  "item.mccourse.onion_seeds": "Onion Seeds",
+  "block.mccourse.onion_crop": "Onion Crop",
 
   "tooltip.mccourse.chainsaw.tooltip.shift": "Press §eShift§r: Tissemand",
   "tooltip.mccourse.chainsaw.tooltop.1": "This Chainsaw will cut down trees",

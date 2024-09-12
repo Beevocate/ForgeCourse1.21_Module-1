@@ -3,6 +3,7 @@ package com.beevocate.mccourse.block;
 import com.beevocate.mccourse.MCCourseMod;
 import com.beevocate.mccourse.block.custom.AzuriteLampBlock;
 import com.beevocate.mccourse.block.custom.MagicBlock;
+import com.beevocate.mccourse.block.custom.OnionCropBlock;
 import com.beevocate.mccourse.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -83,6 +84,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> AZURITE_TRAPDOOR = registerBlock("azurite_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.BAMBOO, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().noOcclusion()));
+
+    public static final RegistryObject<Block> ONION_CROP = BLOCKS.register("onion_crop",
+            () -> new OnionCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
 
 

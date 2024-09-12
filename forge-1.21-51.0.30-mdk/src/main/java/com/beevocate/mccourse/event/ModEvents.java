@@ -8,17 +8,22 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -91,6 +96,17 @@ public class ModEvents {
                 if (player.level() instanceof ServerLevel serverLevel) {
                     BlockPos pos = player.blockPosition(); // Get the position of the entity
                     spawnsLightningBoltEntityOnHit(serverLevel, pos);
+                }
+            }
+        }
+
+        // Hits enemy with a lightning bolt when hit by the Sentient Bows Arrows - DOES NOT WORK
+        if (event.getEntity() instanceof LivingEntity livingEntity){
+            if (event.getSource().getDirectEntity() instanceof Player player) {
+                if (livingEntity.getProjectile(ItemStack.EMPTY).getItem() == ModItems.SENTIENT_BOW.get()){
+                    if (livingEntity.level() instanceof ServerLevel serverLevel) {
+                        BlockPos pos = livingEntity.blockPosition(); // Get the position of the entity
+                    }
                 }
             }
         }

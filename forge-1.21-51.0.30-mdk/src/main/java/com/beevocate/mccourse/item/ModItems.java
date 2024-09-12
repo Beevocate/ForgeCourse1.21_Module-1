@@ -1,6 +1,7 @@
 package com.beevocate.mccourse.item;
 
 import com.beevocate.mccourse.MCCourseMod;
+import com.beevocate.mccourse.block.ModBlocks;
 import com.beevocate.mccourse.entity.ModEntities;
 import com.beevocate.mccourse.item.custom.*;
 import net.minecraft.network.chat.Component;
@@ -99,6 +100,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> SENTIENT_BOW = ITEMS.register("sentient_bow",
             () -> new BowItem(new Item.Properties().durability(250)));
+
+    public static final RegistryObject<Item> ONION_SEEDS = ITEMS.register("onion_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.ONION_CROP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> CAPYBARA_SPAWN_EGG = ITEMS.register("capybara_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.CAPYBARA,0x664216, 0xdeab1f,
