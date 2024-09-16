@@ -1,6 +1,8 @@
 package com.beevocate.mccourse.event;
 
 import com.beevocate.mccourse.MCCourseMod;
+import com.beevocate.mccourse.command.ReturnHomeCommand;
+import com.beevocate.mccourse.command.SetHomeCommand;
 import com.beevocate.mccourse.entity.custom.BloodDemonEntity;
 import com.beevocate.mccourse.item.ModItems;
 import com.beevocate.mccourse.item.custom.HammerItem;
@@ -22,11 +24,14 @@ import net.minecraft.world.entity.projectile.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.server.command.ConfigCommand;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +42,23 @@ public class ModEvents {
 
     // Done with the help of https://github.com/CoFH/CoFHCore/blob/1.19.x/src/main/java/cofh/core/event/AreaEffectEvents.java
     // Don't be a jerk License
+
+
+    @SubscribeEvent
+    public static void onCommandsRegister(RegisterCommandsEvent event) {
+        new SetHomeCommand(event.getDispatcher());
+        new ReturnHomeCommand(event.getDispatcher());
+
+        ConfigCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onPlayerCloned(PlayerEvent.Clone event) {
+        event.getEntity().getPersistentData().putIntArray("mccourse.homepos",
+                event.getOriginal().getPersistentData().getIntArray("mccourse.homepos"));
+    }
+
+
 
     @SubscribeEvent
     public static void onHammerUsage(BlockEvent.BreakEvent event) {

@@ -1,4 +1,4 @@
-// 1.21	2024-09-12T17:10:21.1790215	Item Models: mccourse
+// 1.21	2024-09-15T17:06:19.763733	Item Models: mccourse
 1ce777d01800de4f89188a30f319cab2b5fbf262 assets/mccourse/models/item/aurora_ashes.json
 df3ca36915ce05a651f008eaa893eb1327e22921 assets/mccourse/models/item/azurite.json
 06611df5b83d02b594ebc5c659f09f8732478f45 assets/mccourse/models/item/azurite_axe.json
@@ -18,6 +18,7 @@ d172f1c35ad0070f2f46345edde1610195c479c0 assets/mccourse/models/item/azurite_swo
 1a7bdd49edb411ae3c9efae6d2a92ba93723242d assets/mccourse/models/item/azurite_wall.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/mccourse/models/item/blood_demon_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/mccourse/models/item/capybara_spawn_egg.json
+376115c42226cc933c79830495be6b1b5629514b assets/mccourse/models/item/catmint.json
 f2aeca2040ea829b8b6878ebe3a168fcb74381d2 assets/mccourse/models/item/chainsaw.json
 23f99234f647aa805541635819a0a2a8b1552d81 assets/mccourse/models/item/metal_detector.json
 a7d5feb86bed77eaacdb1842113cbf06cd21ab3a assets/mccourse/models/item/onion.json

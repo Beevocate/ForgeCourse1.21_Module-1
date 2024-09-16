@@ -61,10 +61,20 @@
   "item.mccourse.onion_seeds": "Onion Seeds",
   "block.mccourse.onion_crop": "Onion Crop",
 
+
+  "block.mccourse.catmint": "Catmint",
+  "block.mccourse.potted_catmint": "Potted Catmint",
+  "block.mccourse.colored_leaves": "Colored Leaves",
+
   "tooltip.mccourse.chainsaw.tooltip.shift": "Press §eShift§r: Tissemand",
   "tooltip.mccourse.chainsaw.tooltop.1": "This Chainsaw will cut down trees",
   "tooltip.mccourse.chainsaw.tooltip.2": "§oChainsaw go br br OBAMA!§r",
 
+  "item.mccourse.bar_brawl_music_disc": "Bar Brawl Music Disc",
+  "item.mccourse.bar_brawl_music_disc.desc": "Bryan Tech - Bar Brawl (CC0)",
+
+  "sounds.mccourse.chainsaw_cut": "Chainsaw Sound",
+  "sounds.mccourse.chainsaw_pull": "Pull Chainsaw Sound",
 
   "tooltip.mccourse.magic_block.tooltip.1": "§oInside of this there lies magic§r",
 

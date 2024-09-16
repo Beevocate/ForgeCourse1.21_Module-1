@@ -61,6 +61,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModItems.METAL_DETECTOR.get());
         basicItem(ModItems.ONION_SEEDS.get());
+        simpleBlockBlockItem(ModBlocks.CATMINT);
+
+        basicItem(ModItems.BAR_BRAWL_MUSIC_DISC.get());
         // basicItem(ModItems.DATA_TABLET.get());
     }
 
@@ -79,6 +82,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID,
                         "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+    }
+
+    private ItemModelBuilder simpleBlockBlockItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(MCCourseMod.MOD_ID,"block/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder simpleBlockItem(RegistryObject<Block> item) {

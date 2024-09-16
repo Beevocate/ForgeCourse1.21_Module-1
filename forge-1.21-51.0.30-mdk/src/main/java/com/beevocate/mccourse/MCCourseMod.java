@@ -7,11 +7,18 @@ import com.beevocate.mccourse.entity.client.BloodDemonRenderer;
 import com.beevocate.mccourse.entity.client.CapybaraRenderer;
 import com.beevocate.mccourse.item.ModCreativeModeTabs;
 import com.beevocate.mccourse.item.ModItems;
+import com.beevocate.mccourse.sound.ModSounds;
 import com.beevocate.mccourse.util.ModItemProperties;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -46,7 +53,7 @@ public class MCCourseMod {
         ModBlocks.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
         register(modEventBus);
-
+        ModSounds.register(modEventBus);
 
 
 
@@ -60,7 +67,12 @@ public class MCCourseMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            ComposterBlock.COMPOSTABLES.put(ModItems.ONION.get(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(ModItems.ONION_SEEDS.get(), 0.35f);
 
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CATMINT.getId(), ModBlocks.POTTED_CATMINT);
+        });
     }
 
     // Add the example block item to the building blocks tab
@@ -85,5 +97,17 @@ public class MCCourseMod {
             EntityRenderers.register(ModEntities.CAPYBARA.get(), CapybaraRenderer::new);
             EntityRenderers.register(ModEntities.BLOOD_DEMON.get(), BloodDemonRenderer::new);
         }
+
+        @SubscribeEvent
+        public static void registerColoredBlocks(RegisterColorHandlersEvent.Block event) {
+            event.register((pState, pLevel, pPos, pTintIndex) -> pLevel != null &&
+                    pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(), ModBlocks.COLORED_LEAVES.get());
+        }
+
+        @SubscribeEvent
+        public static void registerColoredItems(RegisterColorHandlersEvent.Item event) {
+            event.register((pStack, pTintIndex) -> FoliageColor.getDefaultColor(), ModBlocks.COLORED_LEAVES.get());
+        }
     }
+
 }

@@ -5,7 +5,9 @@ import com.beevocate.mccourse.block.custom.AzuriteLampBlock;
 import com.beevocate.mccourse.block.custom.MagicBlock;
 import com.beevocate.mccourse.block.custom.OnionCropBlock;
 import com.beevocate.mccourse.item.ModItems;
+import com.beevocate.mccourse.sound.ModSounds;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -49,8 +51,8 @@ public class ModBlocks {
                     BlockBehaviour.Properties.of().strength(5f).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> MAGIC_BLOCK = registerBlock("magic_block",
-            () -> new MagicBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(4f)
+                    .requiresCorrectToolForDrops().noLootTable().sound(ModSounds.MAGIC_BLOCK_SOUNDS)));
 
     public static final RegistryObject<Block> AZURITE_LAMP = registerBlock("azurite_lamp",
             () -> new AzuriteLampBlock(BlockBehaviour.Properties.of().strength(3f)
@@ -88,7 +90,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> ONION_CROP = BLOCKS.register("onion_crop",
             () -> new OnionCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
+    public static final RegistryObject<Block> CATMINT = registerBlock("catmint",
+            () -> new FlowerBlock(MobEffects.LUCK, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
+    public static final RegistryObject<Block> POTTED_CATMINT = BLOCKS.register("potted_catmint",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), CATMINT, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
 
+    public static final RegistryObject<Block> COLORED_LEAVES = registerBlock("colored_leaves",
+            () -> new Block(BlockBehaviour.Properties.of()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name,block);

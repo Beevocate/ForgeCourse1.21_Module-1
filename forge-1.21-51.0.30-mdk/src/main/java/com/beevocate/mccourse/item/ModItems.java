@@ -4,6 +4,7 @@ import com.beevocate.mccourse.MCCourseMod;
 import com.beevocate.mccourse.block.ModBlocks;
 import com.beevocate.mccourse.entity.ModEntities;
 import com.beevocate.mccourse.item.custom.*;
+import com.beevocate.mccourse.sound.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -34,13 +35,15 @@ public class ModItems {
 
     // Anonoumous Class
     public static final RegistryObject<Item> ONION = ITEMS.register("onion",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.ONION)){
+            () -> new Item(new Item.Properties().food(ModFoodProperties.ONION)) {
                 @Override
                 public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
                     pTooltipComponents.add(Component.translatable("tooltip.mccourse.onion.tooltip.1"));
                     super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
                 }
             });
+
+
 
     public static final RegistryObject<Item> AURORA_ASHES = ITEMS.register("aurora_ashes",
             () -> new FuelItem(new Item.Properties(),800));
@@ -111,6 +114,9 @@ public class ModItems {
     public static final RegistryObject<Item> BLOOD_DEMON_SPAWN_EGG = ITEMS.register("blood_demon_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BLOOD_DEMON,0xe14f4f, 0x8a2700,
                     new Item.Properties()));
+
+    public static final RegistryObject<Item> BAR_BRAWL_MUSIC_DISC = ITEMS.register("bar_brawl_music_disc",
+            () -> new Item(new Item.Properties().stacksTo(1).jukeboxPlayable(ModSounds.BAR_BRAWL_KEY)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

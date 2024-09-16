@@ -45,6 +45,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.KAUPEN_BOW.get());
                         output.accept(ModItems.SENTIENT_BOW.get());
                         output.accept(ModItems.ONION_SEEDS.get());
+                        output.accept(ModBlocks.CATMINT.get());
+                        output.accept(ModItems.BAR_BRAWL_MUSIC_DISC.get());
+
 
 
                     }).build());
@@ -70,6 +73,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AZURITE_WALL.get());
                         output.accept(ModBlocks.AZURITE_DOOR.get());
                         output.accept(ModBlocks.AZURITE_TRAPDOOR.get());
+                        output.accept(ModBlocks.COLORED_LEAVES.get());
 
 
                     }).build());
